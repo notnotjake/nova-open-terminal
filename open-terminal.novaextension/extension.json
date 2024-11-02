@@ -1,39 +1,40 @@
 {
-   "identifier": "notnotjake.OpeninTerminal",
-   "name": "Open in Terminal",
-   "organization": "notnotJake",
-   "description": "Opens the current project or focused document in terminal of your choice",
-    "version": "1.0",
-    "categories": ["Commands"],
-    "main": "main.js",
-    "entitlements": {
-        "filesystem": "readwrite", 
-        "process": true
-    },
-    "commands": {
-        "editor": [
-            {
-                "title": "Open Project in Terminal",
-                "command": "terminalOpener.openProject"
-            },
-            {
-                "title": "Open Path in Terminal",
-                "command": "terminalOpener.openFocused",
-                "when": "editorHasFocus"
-            }
-        ]
-    },
-    "config": [
-        {
-            "key": "terminalOpener.terminalApp",
-            "title": "Terminal Application",
-            "type": "enum",
-            "values": [
-                ["terminal", "Terminal"],
-                ["iterm", "iTerm2"]
-            ],
-            "default": "terminal",
-            "description": "Terminal application to open new windows with"
-        }
-    ]
+	"identifier": "notnotjake.OpeninTerminal",
+	"name": "Open in Terminal",
+	"organization": "notnotJake",
+	"description": "Opens the current project or focused document in terminal of your choice",
+	"version": "0.1",
+	"repository": "https://github.com/notnotjake/nova-open-terminal",
+	"bugs": "https://github.com/notnotjake/nova-open-terminal/issues",
+	"categories": ["Commands"],
+	"main": "main.js",
+	"entitlements": {
+		"filesystem": "readwrite", 
+		"process": true
+	},
+	"commands": {
+		"editor": [
+			{
+				"title": "Open Project in Terminal",
+				"command": "terminalOpener.openProject"
+			},
+			{
+				"title": "Open Path in Terminal",
+				"command": "terminalOpener.openFocused",
+				"when": "editorHasFocus"
+			}
+		]
+	},
+	"config": [
+		{
+			"key": "terminalOpener.terminalApp",
+			"title": "Terminal Application",
+			"type": "enum",
+			"values": [
+				["iterm", "iTerm2"]
+			],
+			"default": "terminal",
+			"description": "Terminal application to open new windows with"
+		}
+	]
 }
