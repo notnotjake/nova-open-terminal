@@ -6,7 +6,7 @@
 	"version": "0.1",
 	"repository": "https://github.com/notnotjake/nova-open-terminal",
 	"bugs": "https://github.com/notnotjake/nova-open-terminal/issues",
-	"categories": ["Commands"],
+	"categories": ["commands"],
 	"main": "main.js",
 	"entitlements": {
 		"filesystem": "readwrite", 
