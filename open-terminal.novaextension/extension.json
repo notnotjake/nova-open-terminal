@@ -3,7 +3,7 @@
 	"name": "Open in Terminal",
 	"organization": "notnotJake",
 	"description": "Opens the current project or focused document in terminal of your choice",
-	"version": "0.1",
+	"version": "0.1.1",
 	"repository": "https://github.com/notnotjake/nova-open-terminal",
 	"bugs": "https://github.com/notnotjake/nova-open-terminal/issues",
 	"categories": ["commands"],

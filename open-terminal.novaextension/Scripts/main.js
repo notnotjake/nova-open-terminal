@@ -68,20 +68,26 @@ async function openAndNavigate(path, mode) {
             
             -- Check each tab in the window
             repeat with t in windowTabs
-                set currentSession to current session of t
-                set sessionName to name of currentSession
-                
-                -- Check if this is our project tab
-                if sessionName is equal to projectTabName then
-                    set foundWindow to w
-                    set foundProjectTab to t
-                end if
-                
-                -- Check if this is our path tab
-                if sessionName is equal to pathTabName then
-                    set foundWindow to w
-                    set foundPathTab to t
-                end if
+                try
+                    set currentSession to current session of t
+                    if currentSession is not missing value then
+                        set sessionName to name of currentSession
+                        
+                        -- Check if this is our project tab
+                        if sessionName is equal to projectTabName then
+                            set foundWindow to w
+                            set foundProjectTab to t
+                        end if
+                        
+                        -- Check if this is our path tab
+                        if sessionName is equal to pathTabName then
+                            set foundWindow to w
+                            set foundPathTab to t
+                        end if
+                    end if
+                on error errorMessage
+                    -- nothing for now
+                end try
             end repeat
             
             -- If we found our window, exit the search
@@ -169,7 +175,7 @@ async function openAndNavigate(path, mode) {
     end tell
     `.trim()
     
-    console.log(script)
+    // console.log(script)
     
     return new Promise((resolve, reject) => {
         const process = new Process("/usr/bin/osascript", {
