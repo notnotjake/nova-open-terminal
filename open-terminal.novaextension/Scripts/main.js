@@ -57,6 +57,9 @@ async function openAndNavigate(path, mode) {
         set projectTabName to "Nova: " & projectTabIndicator & "${projectName}" -- Project tab marker
         set pathTabName to "Nova: " & "${projectName}" & pathTabIndicator -- Path tab marker
         
+        -- Set up the target path for safe shell execution
+        set targetPath to "${path}"
+        
         -- First find if we have a window for this project
         set foundWindow to missing value
         set foundProjectTab to missing value
@@ -113,7 +116,7 @@ async function openAndNavigate(path, mode) {
                         create tab with profile "Nova"
                         tell current tab
                             tell current session
-                                write text "cd ${path} && clear"
+                                write text "cd " & quoted form of targetPath & " && clear"
                                 set name to projectTabIndicator & "${projectName}"
                             end tell
                         end tell
@@ -125,7 +128,7 @@ async function openAndNavigate(path, mode) {
                     set newWindow to current window
                     tell newWindow
                         tell current session
-                            write text "cd ${path} && clear"
+                            write text "cd " & quoted form of targetPath & " && clear"
                             set name to projectTabIndicator & "${projectName}"
                         end tell
                         activate
@@ -141,7 +144,7 @@ async function openAndNavigate(path, mode) {
                         -- Update existing path tab
                         tell foundPathTab
                             tell current session
-                                write text "cd ${path}"
+                                write text "cd " & quoted form of targetPath
                                 set name to "${projectName}" & pathTabIndicator
                             end tell
                         end tell
@@ -152,7 +155,7 @@ async function openAndNavigate(path, mode) {
                         create tab with profile "Nova"
                         tell current tab
                             tell current session
-                                write text "cd ${path} && clear"
+                                write text "cd " & quoted form of targetPath & " && clear"
                                 set name to "${projectName}" & pathTabIndicator
                             end tell
                         end tell
@@ -165,7 +168,7 @@ async function openAndNavigate(path, mode) {
                 set newWindow to current window
                 tell newWindow
                     tell current session
-                        write text "cd ${path} && clear"
+                        write text "cd " & quoted form of targetPath & " && clear"
                         set name to "${projectName}" & pathTabIndicator
                     end tell
                     activate
